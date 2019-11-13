@@ -8,7 +8,9 @@
 
 import UIKit
 
-class CountryVC: UIViewController {
+class CountryListVC: UIViewController {
+    
+    @IBOutlet weak var collectionView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()

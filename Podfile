@@ -6,6 +6,7 @@ target 'Country' do
   use_frameworks!
 
   # Pods for Country
+  pod 'Alamofire', '~> 5.0.0-rc.3'
 
   target 'CountryTests' do
     inherit! :search_paths
