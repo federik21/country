@@ -8,6 +8,29 @@
 
 /* Begin PBXBuildFile section */
 		33A3529DA773D2C0FF1921BE /* Pods_Country.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA38E530CEBC49574C82C158 /* Pods_Country.framework */; };
+		BB400B0E237C6D7900EBCC52 /* CountryListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB400B0D237C6D7900EBCC52 /* CountryListVM.swift */; };
+		BB400B11237C6FF600EBCC52 /* CountryListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB400B10237C6FF600EBCC52 /* CountryListPresenter.swift */; };
+		BB4588702380125C008F50A4 /* CountryTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB45886F2380125C008F50A4 /* CountryTVC.swift */; };
+		BB4588722380150C008F50A4 /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4588712380150C008F50A4 /* MockURLSession.swift */; };
+		BB45887423801845008F50A4 /* RouterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB45887323801845008F50A4 /* RouterTest.swift */; };
+		BB45887623801D89008F50A4 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC0D496237C13FD0066D235 /* ApiService.swift */; };
+		BB45887923802157008F50A4 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC0D49F237C21870066D235 /* Country.swift */; };
+		BB458882238021A1008F50A4 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF504D5237C4D8100F8DB3A /* EndPoint.swift */; };
+		BB458883238021A1008F50A4 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF504F6237C5B1F00F8DB3A /* ParameterEncoding.swift */; };
+		BB458884238021A1008F50A4 /* URLParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF504E6237C542A00F8DB3A /* URLParameterEncoding.swift */; };
+		BB458885238021A1008F50A4 /* JSONParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF504E7237C542A00F8DB3A /* JSONParameterEncoder.swift */; };
+		BB458886238021A1008F50A4 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF504DA237C542A00F8DB3A /* NetworkManager.swift */; };
+		BB458887238021A1008F50A4 /* HTTPTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF504DD237C542A00F8DB3A /* HTTPTask.swift */; };
+		BB458888238021A1008F50A4 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF504DE237C542A00F8DB3A /* HTTPMethod.swift */; };
+		BB45888A238021A1008F50A4 /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF504E1237C542A00F8DB3A /* EndPointType.swift */; };
+		BB45888B238021AB008F50A4 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF504DF237C542A00F8DB3A /* Router.swift */; };
+		BB45888D2380232A008F50A4 /* SessionProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB45888C2380232A008F50A4 /* SessionProtocols.swift */; };
+		BB45888E23802388008F50A4 /* SessionProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB45888C2380232A008F50A4 /* SessionProtocols.swift */; };
+		BB45888F238023F0008F50A4 /* Currencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC0D49E237C21870066D235 /* Currencies.swift */; };
+		BB458890238023F0008F50A4 /* Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC0D4A1237C21870066D235 /* Languages.swift */; };
+		BB458891238023F0008F50A4 /* RegionalBlocs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC0D4A2237C21870066D235 /* RegionalBlocs.swift */; };
+		BB458892238023F0008F50A4 /* Translations.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC0D4A0237C21870066D235 /* Translations.swift */; };
+		BB45889423802B7A008F50A4 /* StaticTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB45889323802B7A008F50A4 /* StaticTestData.swift */; };
 		BB92BBEA237BFC6300D7A2E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB92BBE9237BFC6300D7A2E4 /* AppDelegate.swift */; };
 		BB92BBEC237BFC6300D7A2E4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB92BBEB237BFC6300D7A2E4 /* SceneDelegate.swift */; };
 		BB92BBEE237BFC6300D7A2E4 /* CountryListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB92BBED237BFC6300D7A2E4 /* CountryListVC.swift */; };
@@ -60,6 +83,13 @@
 		1DDA31D040E55EBD7AAD6947 /* Pods_CountryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CountryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		297810903F4AEAD89F4AAE8B /* Pods_Country_CountryUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Country_CountryUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		911874D2513F8E017E3B3A79 /* Pods-CountryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryTests.release.xcconfig"; path = "Target Support Files/Pods-CountryTests/Pods-CountryTests.release.xcconfig"; sourceTree = "<group>"; };
+		BB400B0D237C6D7900EBCC52 /* CountryListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListVM.swift; sourceTree = "<group>"; };
+		BB400B10237C6FF600EBCC52 /* CountryListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListPresenter.swift; sourceTree = "<group>"; };
+		BB45886F2380125C008F50A4 /* CountryTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTVC.swift; sourceTree = "<group>"; };
+		BB4588712380150C008F50A4 /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
+		BB45887323801845008F50A4 /* RouterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterTest.swift; sourceTree = "<group>"; };
+		BB45888C2380232A008F50A4 /* SessionProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionProtocols.swift; sourceTree = "<group>"; };
+		BB45889323802B7A008F50A4 /* StaticTestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticTestData.swift; sourceTree = "<group>"; };
 		BB92BBE6237BFC6300D7A2E4 /* Country.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Country.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB92BBE9237BFC6300D7A2E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB92BBEB237BFC6300D7A2E4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -140,6 +170,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		BB400B0F237C6D9B00EBCC52 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				BB400B0D237C6D7900EBCC52 /* CountryListVM.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		BB92BBDD237BFC6300D7A2E4 = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +207,7 @@
 				BB92BBEB237BFC6300D7A2E4 /* SceneDelegate.swift */,
 				BBC0D495237C13660066D235 /* Domain */,
 				BBC0D49D237C16780066D235 /* View */,
+				BB400B0F237C6D9B00EBCC52 /* ViewModel */,
 				BBC0D4AA237C281B0066D235 /* Presenter */,
 				BB92BBEF237BFC6300D7A2E4 /* Main.storyboard */,
 				BB92BBF2237BFC6800D7A2E4 /* Assets.xcassets */,
@@ -182,6 +221,9 @@
 			isa = PBXGroup;
 			children = (
 				BB92BC00237BFC6900D7A2E4 /* CountryTests.swift */,
+				BB45887323801845008F50A4 /* RouterTest.swift */,
+				BB4588712380150C008F50A4 /* MockURLSession.swift */,
+				BB45889323802B7A008F50A4 /* StaticTestData.swift */,
 				BB92BC02237BFC6900D7A2E4 /* Info.plist */,
 			);
 			path = CountryTests;
@@ -219,6 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				BB92BBED237BFC6300D7A2E4 /* CountryListVC.swift */,
+				BB45886F2380125C008F50A4 /* CountryTVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -239,6 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				BBC0D4AB237C283C0066D235 /* SearchBarPresenter.swift */,
+				BB400B10237C6FF600EBCC52 /* CountryListPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -278,6 +322,7 @@
 				BBF504DE237C542A00F8DB3A /* HTTPMethod.swift */,
 				BBF504DF237C542A00F8DB3A /* Router.swift */,
 				BBF504E1237C542A00F8DB3A /* EndPointType.swift */,
+				BB45888C2380232A008F50A4 /* SessionProtocols.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -553,12 +598,15 @@
 				BB92BBEE237BFC6300D7A2E4 /* CountryListVC.swift in Sources */,
 				BBC0D4AC237C283C0066D235 /* SearchBarPresenter.swift in Sources */,
 				BBC0D4A3237C21870066D235 /* Currencies.swift in Sources */,
+				BB4588702380125C008F50A4 /* CountryTVC.swift in Sources */,
 				BBF504EE237C542B00F8DB3A /* EndPointType.swift in Sources */,
+				BB45888D2380232A008F50A4 /* SessionProtocols.swift in Sources */,
 				BBF504E8237C542B00F8DB3A /* NetworkManager.swift in Sources */,
 				BB92BBEA237BFC6300D7A2E4 /* AppDelegate.swift in Sources */,
 				BBC0D497237C13FD0066D235 /* ApiService.swift in Sources */,
 				BBF504EA237C542B00F8DB3A /* HTTPTask.swift in Sources */,
 				BBC0D4A5237C21870066D235 /* Translations.swift in Sources */,
+				BB400B11237C6FF600EBCC52 /* CountryListPresenter.swift in Sources */,
 				BBC0D4A4237C21870066D235 /* Country.swift in Sources */,
 				BBF504F5237C5A0200F8DB3A /* NativeClient.swift in Sources */,
 				BBF504EC237C542B00F8DB3A /* Router.swift in Sources */,
@@ -568,6 +616,7 @@
 				BBC0D49C237C162F0066D235 /* AFClient.swift in Sources */,
 				BBF504F1237C542B00F8DB3A /* URLParameterEncoding.swift in Sources */,
 				BBF504F2237C542B00F8DB3A /* JSONParameterEncoder.swift in Sources */,
+				BB400B0E237C6D7900EBCC52 /* CountryListVM.swift in Sources */,
 				BBC0D4A6237C21870066D235 /* Languages.swift in Sources */,
 				BBF504D6237C4D8100F8DB3A /* EndPoint.swift in Sources */,
 			);
@@ -577,6 +626,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB458884238021A1008F50A4 /* URLParameterEncoding.swift in Sources */,
+				BB458883238021A1008F50A4 /* ParameterEncoding.swift in Sources */,
+				BB458891238023F0008F50A4 /* RegionalBlocs.swift in Sources */,
+				BB458890238023F0008F50A4 /* Languages.swift in Sources */,
+				BB458886238021A1008F50A4 /* NetworkManager.swift in Sources */,
+				BB45889423802B7A008F50A4 /* StaticTestData.swift in Sources */,
+				BB458882238021A1008F50A4 /* EndPoint.swift in Sources */,
+				BB45887923802157008F50A4 /* Country.swift in Sources */,
+				BB45887423801845008F50A4 /* RouterTest.swift in Sources */,
+				BB45888A238021A1008F50A4 /* EndPointType.swift in Sources */,
+				BB458892238023F0008F50A4 /* Translations.swift in Sources */,
+				BB458885238021A1008F50A4 /* JSONParameterEncoder.swift in Sources */,
+				BB458887238021A1008F50A4 /* HTTPTask.swift in Sources */,
+				BB458888238021A1008F50A4 /* HTTPMethod.swift in Sources */,
+				BB45888B238021AB008F50A4 /* Router.swift in Sources */,
+				BB45888E23802388008F50A4 /* SessionProtocols.swift in Sources */,
+				BB45887623801D89008F50A4 /* ApiService.swift in Sources */,
+				BB4588722380150C008F50A4 /* MockURLSession.swift in Sources */,
+				BB45888F238023F0008F50A4 /* Currencies.swift in Sources */,
 				BB92BC01237BFC6900D7A2E4 /* CountryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

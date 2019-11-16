@@ -19,7 +19,6 @@ enum NetworkResponse:String, Error {
 
 struct NetworkManager {
     static let environment : NetworkEnvironment = .production
-    let router = Router<CountryApi>()
     
     fileprivate func handleNetworkResponse(_ response: HTTPURLResponse) -> Result<Int, Error>{
         switch response.statusCode {

@@ -8,12 +8,14 @@
 
 import Foundation
 
-//  This client is based on the work of by Malcolm Kumwenda. I've migrated all the responses to the newer Result type introduced in Swift 5.0.
+//  This client is based on the work of by Malcolm Kumwenda. I've migrated all the responses to the newer Result type introduced in Swift 5.0
 
 class NativeClient : ApiService {
     
+    private let router = Router<CountryApi>(session: URLSession.shared)
+    
     func fetchCountries(completion: @escaping (Result<[Country], Error>) -> Void){
-        Router().request(CountryApi.all(()) , completion: {
+        router.request(CountryApi.all(()) , completion: {
             response in
             switch response {
             case .success(let data):
