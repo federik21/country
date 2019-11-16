@@ -29,6 +29,8 @@
 		BB458891238023F0008F50A4 /* RegionalBlocs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC0D4A2237C21870066D235 /* RegionalBlocs.swift */; };
 		BB458892238023F0008F50A4 /* Translations.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC0D4A0237C21870066D235 /* Translations.swift */; };
 		BB7EDC1C238036D90056B053 /* CountryTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7EDC192380362D0056B053 /* CountryTVC.swift */; };
+		BB7EDC2023804B650056B053 /* FilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7EDC1F23804B650056B053 /* FilterVC.swift */; };
+		BB7EDC2523804FE50056B053 /* CountryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7EDC2423804FE50056B053 /* CountryViewModel.swift */; };
 		BB92BBEA237BFC6300D7A2E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB92BBE9237BFC6300D7A2E4 /* AppDelegate.swift */; };
 		BB92BBEC237BFC6300D7A2E4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB92BBEB237BFC6300D7A2E4 /* SceneDelegate.swift */; };
 		BB92BBEE237BFC6300D7A2E4 /* CountryListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB92BBED237BFC6300D7A2E4 /* CountryListVC.swift */; };
@@ -86,6 +88,8 @@
 		BB45887323801845008F50A4 /* RouterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterTest.swift; sourceTree = "<group>"; };
 		BB45888C2380232A008F50A4 /* SessionProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionProtocols.swift; sourceTree = "<group>"; };
 		BB7EDC192380362D0056B053 /* CountryTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTVC.swift; sourceTree = "<group>"; };
+		BB7EDC1F23804B650056B053 /* FilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterVC.swift; sourceTree = "<group>"; };
+		BB7EDC2423804FE50056B053 /* CountryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewModel.swift; sourceTree = "<group>"; };
 		BB92BBE6237BFC6300D7A2E4 /* Country.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Country.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB92BBE9237BFC6300D7A2E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB92BBEB237BFC6300D7A2E4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -174,6 +178,14 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		BB7EDC2323804FAF0056B053 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				BB7EDC2423804FE50056B053 /* CountryViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		BB92BBDD237BFC6300D7A2E4 = {
 			isa = PBXGroup;
 			children = (
@@ -203,7 +215,7 @@
 				BB92BBEB237BFC6300D7A2E4 /* SceneDelegate.swift */,
 				BBC0D495237C13660066D235 /* Domain */,
 				BBC0D49D237C16780066D235 /* View */,
-				BBC0D4AA237C281B0066D235 /* Presenter */,
+				BB7EDC2323804FAF0056B053 /* ViewModel */,
 				BB92BBEF237BFC6300D7A2E4 /* Main.storyboard */,
 				BB92BBF2237BFC6800D7A2E4 /* Assets.xcassets */,
 				BB92BBF4237BFC6800D7A2E4 /* LaunchScreen.storyboard */,
@@ -255,7 +267,9 @@
 			isa = PBXGroup;
 			children = (
 				BB92BBED237BFC6300D7A2E4 /* CountryListVC.swift */,
+				BB7EDC1F23804B650056B053 /* FilterVC.swift */,
 				BB7EDC1B2380363C0056B053 /* Cell */,
+				BBC0D4AA237C281B0066D235 /* Presenter */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -590,8 +604,10 @@
 			files = (
 				BBF504F7237C5B1F00F8DB3A /* ParameterEncoding.swift in Sources */,
 				BB92BBEE237BFC6300D7A2E4 /* CountryListVC.swift in Sources */,
+				BB7EDC2023804B650056B053 /* FilterVC.swift in Sources */,
 				BBC0D4AC237C283C0066D235 /* SearchBarPresenter.swift in Sources */,
 				BBC0D4A3237C21870066D235 /* Currencies.swift in Sources */,
+				BB7EDC2523804FE50056B053 /* CountryViewModel.swift in Sources */,
 				BB7EDC1C238036D90056B053 /* CountryTVC.swift in Sources */,
 				BBF504EE237C542B00F8DB3A /* EndPointType.swift in Sources */,
 				BB45888D2380232A008F50A4 /* SessionProtocols.swift in Sources */,

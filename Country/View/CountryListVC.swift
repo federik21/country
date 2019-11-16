@@ -11,20 +11,24 @@ import UIKit
 class CountryListVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    
-    private var countryListPresenter: CountryListPresenter!
-    
     @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint!
     
+    private var viewModel: CountryViewModel = CountryViewModel()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.countryListPresenter = CountryListPresenter()
-        self.countryListPresenter.delegate = self
         setupListComponents()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "filter"), style: .plain, target: self, action: #selector(chooseFilter))
+    }
+    
+    @objc func chooseFilter(){
+        self.performSegue(withIdentifier: "filter", sender: self)
     }
     
     func setupListComponents(){
-        self.countryListPresenter.bind(tableView: tableView)
+        self.viewModel.countryListPresenter.delegate = self
+        self.viewModel.countryListPresenter.viewModel = viewModel
+        self.viewModel.countryListPresenter.bind(tableView: tableView)
     }
     
     override func viewWillLayoutSubviews() {
@@ -32,6 +36,20 @@ class CountryListVC: UIViewController {
 
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "filter":
+            if let vc = segue.destination as? FilterVC {
+                vc.viewModel = self.viewModel
+                let backItem = UIBarButtonItem()
+                backItem.title = "Apply"
+                navigationItem.backBarButtonItem = backItem
+            }
+        default:
+            break
+        }
     }
     
 }

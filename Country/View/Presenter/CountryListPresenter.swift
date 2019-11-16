@@ -14,8 +14,7 @@ protocol CountryListPresenterDelegate {
 
 class CountryListPresenter :NSObject {
     
-    let client :ApiService = NativeClient()
-
+    var viewModel : CountryViewModel?
     var delegate :CountryListPresenterDelegate?
     var displayedCountries = [Country]() {
         didSet {
@@ -51,11 +50,11 @@ class CountryListPresenter :NSObject {
         self.searchPresenter.searchController.searchBar.sizeToFit()
         self.searchPresenter.delegate = self
         
-        loadDataFromRemote()
+        loadData()
     }
 
-    func loadDataFromRemote(){
-        client.fetchCountries(completion: {
+    func loadData(){
+        viewModel?.loadCountries() {
             [weak self] result in
             switch result {
             case .success(let countries):
@@ -64,7 +63,7 @@ class CountryListPresenter :NSObject {
             case .failure(let error):
                 self?.handleLoadCountriesError(error: error)
             }
-        })
+        }
     }
     
     func handleLoadCountriesError(error : Error) {
