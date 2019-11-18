@@ -14,7 +14,7 @@ protocol CountryListPresenterDelegate {
 
 class CountryListPresenter :NSObject {
     
-    var viewModel : CountryViewModel?
+    weak var viewModel : CountryViewModel?
     var delegate :CountryListPresenterDelegate?
     var displayedCountries = [Country]() {
         didSet {
@@ -36,7 +36,8 @@ class CountryListPresenter :NSObject {
     
     private let searchPresenter = CountrySearchBarController()
     
-    override init() {
+    init(viewModel: CountryViewModel) {
+        self.viewModel = viewModel
         super.init()
     }
     
@@ -55,21 +56,11 @@ class CountryListPresenter :NSObject {
 
     func loadData(){
         viewModel?.loadCountries() {
-            [weak self] result in
-            switch result {
-            case .success(let countries):
+            [weak self] countries in
                 self?.displayedCountries = countries
                 self?.searchPresenter.unfilteredData = countries
-            case .failure(let error):
-                self?.handleLoadCountriesError(error: error)
             }
         }
-    }
-    
-    func handleLoadCountriesError(error : Error) {
-        // TODO
-    }
-    
 }
 
 

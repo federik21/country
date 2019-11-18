@@ -14,6 +14,7 @@ class CountryListVC: UIViewController {
     @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint!
     
     private var viewModel: CountryViewModel = CountryViewModel()
+    private var countryListPresenter: CountryListPresenter!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,9 +27,8 @@ class CountryListVC: UIViewController {
     }
     
     func setupListComponents(){
-        self.viewModel.countryListPresenter.delegate = self
-        self.viewModel.countryListPresenter.viewModel = viewModel
-        self.viewModel.countryListPresenter.bind(tableView: tableView)
+        countryListPresenter = CountryListPresenter(viewModel: self.viewModel)
+        countryListPresenter.bind(tableView: tableView)
     }
     
     override func viewWillLayoutSubviews() {
@@ -36,6 +36,12 @@ class CountryListVC: UIViewController {
 
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

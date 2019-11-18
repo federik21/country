@@ -8,6 +8,10 @@
 
 import Foundation
 
+class MockError : Error {
+    let message = "error"
+}
+
 class MockURLSession :URLSessionProtocol{
     
     var nextDataTask = MockURLSessionDataTask()
@@ -15,6 +19,13 @@ class MockURLSession :URLSessionProtocol{
     var nextError: Error?
     
     func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTaskProtocol {
+        let testBundle = Bundle(for: type(of: self))
+        guard let path = testBundle.url(forResource: "allCountryResponse", withExtension: "json") else { fatalError() }
+        do{
+            nextData = try Data(contentsOf: path, options: .mappedIfSafe)}
+        catch {
+        nextError = MockError()
+        }
         completionHandler(nextData, successHttpURLResponse(request: request), nextError)
         return nextDataTask
     }

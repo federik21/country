@@ -16,6 +16,10 @@ protocol NetworkRouter: class {
     func cancel()
 }
 
+struct ClientError: Error {
+    let message: String
+}
+
 class Router<EndPoint: EndPointType>: NetworkRouter {
     private var task: URLSessionTask?
     private let session: URLSessionProtocol
@@ -33,7 +37,7 @@ class Router<EndPoint: EndPointType>: NetworkRouter {
                     return
                 }
                 guard let data = data  else {
-                    completion(.failure(error!))
+                    completion(.failure(ClientError(message: "data is nil")))
                     return
                 }
                 completion(.success(data))

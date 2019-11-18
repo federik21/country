@@ -10,23 +10,39 @@ import Foundation
 
 class CountryViewModel {
     
-    let client :ApiService = NativeClient()
+    fileprivate var client :ApiService
 
-    var countryListPresenter: CountryListPresenter = CountryListPresenter()
-
+    private var countries = [Country]()
     var languagesFilterMap = [String : Bool]()
     var regionsFilterMap = [String : Bool]()
     
-    func loadCountries(completion: @escaping (Result<[Country], Error>) -> Void){
+    fileprivate var dataDownloaded = false
+    var isFiltering = false
+    
+    init(service: ApiService? = NativeClient()) {
+        client = service ?? NativeClient()
+    }
+    
+    func loadCountries(completion: @escaping ([Country]) -> Void){
+        guard !dataDownloaded else {
+            completion(self.isFiltering ? self.getFilteredCountries() : countries )
+            return
+        }
         client.fetchCountries(completion: {
             [weak self] result in
             switch result {
             case .success(let countries):
-                self?.fetchFilterParams(from: countries)
+                guard let self = self else {
+                    completion([])
+                    return
+                }
+                self.dataDownloaded = true
+                self.countries = countries
+                self.fetchFilterParams(from: countries)
+                completion(self.isFiltering ? self.getFilteredCountries() : countries )
             case .failure(_):
                 break
             }
-            completion(result)
         })
     }
     
@@ -34,16 +50,28 @@ class CountryViewModel {
         for country in countries {
             for language in country.languages ?? [] {
                 if let languageCode = language.iso639_1 {
-                    self.languagesFilterMap.updateValue(true, forKey: languageCode)
+                    self.languagesFilterMap.updateValue(false, forKey: languageCode)
                 }
             }
         }
         for country in countries {
             if let countryRegion = country.region {
-                self.regionsFilterMap.updateValue(true, forKey: countryRegion)
+                self.regionsFilterMap.updateValue(false, forKey: countryRegion)
             }
         }
     }
-        
-    func saveFilters(){}
+    
+    func getFilteredCountries()->[Country]{
+        return countries.filter({
+            [weak self] country in
+            var languageFound = false
+            for language in country.languages ?? [] {
+                if self?.languagesFilterMap[language.iso639_1 ?? ""] == true {
+                    languageFound = true
+                    break
+                }
+            }
+            return (self?.regionsFilterMap[country.region ?? ""] == true) || languageFound
+        })
+    }
 }

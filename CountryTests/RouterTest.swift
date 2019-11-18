@@ -18,15 +18,12 @@ class RouterTest: XCTestCase {
         router = Router(session: session)
     }
     
-    func test_get_request_all_countries() {
-        session.nextError = nil
-        session.nextData = Data()
+    func testGetAllCountries() {
         router.request(CountryApi.all(()), completion: {
             result in
             switch result{
             case .success(_):
                 assert(true)
-
             case .failure(_):
                 assert(false)
             }
