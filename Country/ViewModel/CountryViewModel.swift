@@ -13,21 +13,21 @@ class CountryViewModel {
     fileprivate var client :ApiService
 
     private var countries = [Country]()
-    var languagesFilterMap = [String : Bool]()
-    var regionsFilterMap = [String : Bool]()
     
-    fileprivate var dataDownloaded = false
-    var isFiltering = false
+    var languagesFilter = [String : String]()
+    var regionsFilter = [String: String]()
     
+    var isFiltering : Bool {
+        get{
+            return languagesFilter.count + regionsFilter.count > 0
+        }
+    }
+        
     init(service: ApiService? = NativeClient()) {
         client = service ?? NativeClient()
     }
     
     func loadCountries(completion: @escaping ([Country]) -> Void){
-        guard !dataDownloaded else {
-            completion(self.isFiltering ? self.getFilteredCountries() : countries )
-            return
-        }
         client.fetchCountries(completion: {
             [weak self] result in
             switch result {
@@ -36,9 +36,7 @@ class CountryViewModel {
                     completion([])
                     return
                 }
-                self.dataDownloaded = true
                 self.countries = countries
-                self.fetchFilterParams(from: countries)
                 completion(self.isFiltering ? self.getFilteredCountries() : countries )
             case .failure(_):
                 break
@@ -46,32 +44,70 @@ class CountryViewModel {
         })
     }
     
-    fileprivate func fetchFilterParams(from countries:[Country]){
-        for country in countries {
-            for language in country.languages ?? [] {
-                if let languageCode = language.iso639_1 {
-                    self.languagesFilterMap.updateValue(false, forKey: languageCode)
-                }
-            }
-        }
-        for country in countries {
-            if let countryRegion = country.region {
-                self.regionsFilterMap.updateValue(false, forKey: countryRegion)
-            }
-        }
-    }
-    
     func getFilteredCountries()->[Country]{
         return countries.filter({
             [weak self] country in
             var languageFound = false
             for language in country.languages ?? [] {
-                if self?.languagesFilterMap[language.iso639_1 ?? ""] == true {
+                if self?.languagesFilter[language.iso639_1 ?? ""] != nil {
                     languageFound = true
                     break
                 }
             }
-            return (self?.regionsFilterMap[country.region ?? ""] == true) || languageFound
+            return (self?.regionsFilter[country.region ?? ""] != nil) && languageFound
         })
+    }
+    
+    func getLanguages()->[Languages]{
+        
+        var languagesMap = [String : Languages]()
+        
+        for country in countries {
+            for language in country.languages ?? [] {
+                languagesMap.updateValue(language, forKey: language.iso639_1 ?? "")
+            }
+        }
+        return languagesMap.values.sorted(by: {$1.iso639_1 ?? "" > $0.iso639_1 ?? ""})
+    }
+    
+    func getRegions()->[String]{
+        
+        var regionMap = [String : String]()
+        
+        for country in countries {
+            if let name = country.region, name != "" {
+                regionMap.updateValue(name, forKey: name)
+            }
+        }
+        return regionMap.values.sorted(by: {$1 > $0})
+    }
+    
+    func regionFilterActive(key: String)->Bool{
+        return regionsFilter.contains(where: {$0.key == key})
+    }
+    
+    func languageFilterActive(key: String)->Bool{
+        return languagesFilter.contains(where: {$0.key == key})
+    }
+    
+    func addRegionFilterActive(key: String){
+        regionsFilter.updateValue(key, forKey: key)
+    }
+    
+    func addLanguageFilterActive(key: String){
+        languagesFilter.updateValue(key, forKey: key)
+    }
+    
+    func removeRegionFilterActive(key: String){
+        regionsFilter.removeValue(forKey: key)
+    }
+    
+    func removeLanguageFilterActive(key: String){
+        languagesFilter.removeValue(forKey: key)
+    }
+    
+    func resetFilters(){
+        languagesFilter.removeAll()
+        regionsFilter.removeAll()
     }
 }

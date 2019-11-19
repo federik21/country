@@ -22,6 +22,11 @@ class CountryListVC: UIViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "filter"), style: .plain, target: self, action: #selector(chooseFilter))
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        countryListPresenter.loadData()
+    }
+    
     @objc func chooseFilter(){
         self.performSegue(withIdentifier: "filter", sender: self)
     }

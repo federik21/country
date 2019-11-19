@@ -50,8 +50,6 @@ class CountryListPresenter :NSObject {
         self.tableView?.tableHeaderView = self.searchPresenter.searchController.searchBar
         self.searchPresenter.searchController.searchBar.sizeToFit()
         self.searchPresenter.delegate = self
-        
-        loadData()
     }
 
     func loadData(){

@@ -26,9 +26,6 @@ class CountryTests: XCTestCase {
         viewModel.loadCountries(completion: {
             countries in
             assert(countries.count == 250)
-            assert(self.viewModel.languagesFilterMap.count == 111 )
-            assert(self.viewModel.regionsFilterMap.count == 7 )
-
         })
     }
     
@@ -41,7 +38,7 @@ class CountryTests: XCTestCase {
     
     func checkSingleLanguageFilter(){
         let language = "en"
-        viewModel.languagesFilterMap.updateValue(true, forKey: language)
+        viewModel.addLanguageFilterActive(key: language)
         viewModel.isFiltering = true
         viewModel.loadCountries(completion: {
             countries in
@@ -49,8 +46,6 @@ class CountryTests: XCTestCase {
             for country in countries{
                 assert(country.languages?.first(where: {$0.iso639_1 == language}) != nil)
             }
-            assert(self.viewModel.languagesFilterMap.count == 111 )
-            assert(self.viewModel.regionsFilterMap.count == 7 )
 
         })
     }
@@ -64,7 +59,7 @@ class CountryTests: XCTestCase {
     
     func checkSingleRegionFilter(){
         let region = "Europe"
-        viewModel.regionsFilterMap.updateValue(true, forKey: region)
+        viewModel.addRegionFilterActive(key: region)
         viewModel.isFiltering = true
         viewModel.loadCountries(completion: {
             countries in
@@ -72,8 +67,6 @@ class CountryTests: XCTestCase {
             for country in countries{
                 assert(country.region == region)
             }
-            assert(self.viewModel.languagesFilterMap.count == 111 )
-            assert(self.viewModel.regionsFilterMap.count == 7 )
 
         })
     }

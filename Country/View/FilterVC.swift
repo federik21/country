@@ -11,31 +11,44 @@ import UIKit
 class FilterVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var labelStatus: UILabel!
     // Will be section 0 of the table view
     var regions = [String]()
     
     // Will be section 1 of the table view
-    var languages = [String]()
+    var languages = [Languages]()
 
     weak var viewModel: CountryViewModel? {
         didSet {
-            regions = viewModel?.regionsFilterMap.keys.sorted() ?? []
-            languages = viewModel?.languagesFilterMap.keys.sorted() ?? []
+            regions = viewModel?.getRegions().sorted() ?? []
+            languages = viewModel?.getLanguages().sorted(by: {$1.name ?? "" > $0.name ?? ""}) ?? []
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.dataSource = self
-        tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+    }
+    
+    fileprivate func updateFilteringStatus() {
+        if viewModel?.isFiltering ?? false {
+            labelStatus.text = "Filters are ACTIVE"
+        }
+        else {
+            labelStatus.text = "Filters are OFF"
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        updateFilteringStatus()
     }
     
-    func fetchFilterParams(from countries:[Country]){
-        
+    @IBAction func resetFilter(_ sender: Any) {
+        self.viewModel?.resetFilters()
+        self.tableView.reloadData()
+        updateFilteringStatus()
     }
 
 }
@@ -69,42 +82,56 @@ extension FilterVC : UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "filtersCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "filtersCell", for: indexPath) as! FilterTVC
+        cell.delegate = self
         switch indexPath.section {
             case 0:
                 let data = regions[indexPath.row]
-                cell.textLabel?.text = data
-                cell.setSelected(viewModel?.regionsFilterMap[data] ?? false, animated: true)
+                cell.type = .region
+                cell.filterId = data
+                cell.labelTitle?.text = data
+                let on = viewModel?.regionFilterActive(key: data) ?? false
+                cell.switchActive.isOn = on
+                cell.switchActive.setOn(on, animated: false)
             case 1:
                 let data = languages[indexPath.row]
-                cell.textLabel?.text = data
-                cell.setSelected(viewModel?.languagesFilterMap[data] ?? false, animated: true)
+                cell.type = .language
+                cell.filterId = data.iso639_1
+                cell.labelTitle?.text = data.name
+                let on = viewModel?.languageFilterActive(key: data.iso639_1 ?? "") ?? false
+                cell.switchActive.isOn = on
+                cell.switchActive.setOn(on, animated: false)
             default:
                 break
         }
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)
-        guard let code = cell?.textLabel?.text else {return}
-        switch indexPath.section {
-            case 0:
-                viewModel?.regionsFilterMap.updateValue(true, forKey: code)
-            case 1:
-                viewModel?.languagesFilterMap.updateValue(true, forKey: code)
-            default:break
+}
+
+extension FilterVC : FilterCellDelegate {
+    func filterCell(didSwitchFilter cell: FilterTVC, isOn: Bool) {
+        guard let code = cell.filterId else {return}
+        switch cell.type {
+        case .region:
+            if isOn {
+                viewModel?.addRegionFilterActive(key: code)
+            }
+            else {
+                viewModel?.removeRegionFilterActive(key: code)
+            }
+
+        case .language:
+            if isOn {
+                viewModel?.addLanguageFilterActive(key: code)
+            }
+            else {
+                viewModel?.removeLanguageFilterActive(key: code)
+            }
+        default:
+            break
         }
-    }
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)
-        guard let code = cell?.textLabel?.text else {return}
-        switch indexPath.section {
-            case 0:
-                viewModel?.regionsFilterMap.updateValue(false, forKey: code)
-            case 1:
-                viewModel?.languagesFilterMap.updateValue(false, forKey: code)
-            default:break
-        }
+        updateFilteringStatus()
     }
 }
+
+

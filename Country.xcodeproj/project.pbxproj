@@ -47,6 +47,7 @@
 		BBC0D4A6237C21870066D235 /* Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC0D4A1237C21870066D235 /* Languages.swift */; };
 		BBC0D4A7237C21870066D235 /* RegionalBlocs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC0D4A2237C21870066D235 /* RegionalBlocs.swift */; };
 		BBC0D4AC237C283C0066D235 /* CountrySearchBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC0D4AB237C283C0066D235 /* CountrySearchBarController.swift */; };
+		BBE0098A2383EE1900E25348 /* FilterTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE009892383EE1900E25348 /* FilterTVC.swift */; };
 		BBE4BB5D23816ECD00F5E61A /* MockClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE4BB5C23816ECD00F5E61A /* MockClient.swift */; };
 		BBE4BB5E23816EE100F5E61A /* CountryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7EDC2423804FE50056B053 /* CountryViewModel.swift */; };
 		BBE4BB61238171B200F5E61A /* NativeClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF504F4237C5A0200F8DB3A /* NativeClient.swift */; };
@@ -118,6 +119,7 @@
 		BBC0D4A1237C21870066D235 /* Languages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Languages.swift; sourceTree = "<group>"; };
 		BBC0D4A2237C21870066D235 /* RegionalBlocs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionalBlocs.swift; sourceTree = "<group>"; };
 		BBC0D4AB237C283C0066D235 /* CountrySearchBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountrySearchBarController.swift; sourceTree = "<group>"; };
+		BBE009892383EE1900E25348 /* FilterTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTVC.swift; sourceTree = "<group>"; };
 		BBE4BB5C23816ECD00F5E61A /* MockClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockClient.swift; sourceTree = "<group>"; };
 		BBE4BB64238172E300F5E61A /* allCountryResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = allCountryResponse.json; sourceTree = "<group>"; };
 		BBF504D5237C4D8100F8DB3A /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				BB7EDC192380362D0056B053 /* CountryTVC.swift */,
+				BBE009892383EE1900E25348 /* FilterTVC.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -632,6 +635,7 @@
 				BBF504EC237C542B00F8DB3A /* Router.swift in Sources */,
 				BB92BBEC237BFC6300D7A2E4 /* SceneDelegate.swift in Sources */,
 				BBC0D4A7237C21870066D235 /* RegionalBlocs.swift in Sources */,
+				BBE0098A2383EE1900E25348 /* FilterTVC.swift in Sources */,
 				BBF504EB237C542B00F8DB3A /* HTTPMethod.swift in Sources */,
 				BBC0D49C237C162F0066D235 /* AFClient.swift in Sources */,
 				BBF504F1237C542B00F8DB3A /* URLParameterEncoding.swift in Sources */,
