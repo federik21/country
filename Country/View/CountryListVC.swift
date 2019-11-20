@@ -34,6 +34,7 @@ class CountryListVC: UIViewController {
     func setupListComponents(){
         countryListPresenter = CountryListPresenter(viewModel: self.viewModel)
         countryListPresenter.bind(tableView: tableView)
+        countryListPresenter.delegate = self
     }
     
     override func viewWillLayoutSubviews() {
@@ -58,6 +59,10 @@ class CountryListVC: UIViewController {
                 backItem.title = "Apply"
                 navigationItem.backBarButtonItem = backItem
             }
+        case "detailCountry":
+            if let vc = segue.destination as? CountryDetailVC {
+                vc.country = sender as? Country
+            }
         default:
             break
         }
@@ -68,7 +73,7 @@ class CountryListVC: UIViewController {
 extension CountryListVC: CountryListPresenterDelegate{
     
     func countryListPresenter(didSelectCountry country: Country) {
-        //TODO: go to detail
+        self.performSegue(withIdentifier: "detailCountry", sender: country)
     }
     
 }
