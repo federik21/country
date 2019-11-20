@@ -30,7 +30,9 @@ class DetailViewModel {
          infos.append((label:"region", data: CountryDataType.string(country.region)))
          infos.append((label:"subregion", data: CountryDataType.string(country.subregion)))
          infos.append((label:"population", data: CountryDataType.string("\(country.population ?? 0)")))
-         infos.append((label:"latlng", data: CountryDataType.string("\(country.latlng?[0] ?? 0.0), \(country.latlng?[1] ?? 0.0)" )))
+        if country.latlng?.count ?? 0 > 0 {
+                     infos.append((label:"latlng", data: CountryDataType.string("\(country.latlng?[0] ?? 0.0), \(country.latlng?[1] ?? 0.0)" )))
+            }
          infos.append((label:"demonym", data: CountryDataType.string(country.demonym)))
          infos.append((label:"area", data: CountryDataType.double((country.area))))
          infos.append((label:"gini", data: CountryDataType.double(country.gini)))

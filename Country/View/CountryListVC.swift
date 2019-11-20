@@ -63,6 +63,9 @@ class CountryListVC: UIViewController {
             if let vc = segue.destination as? CountryDetailVC {
                 guard let country = sender as? Country else {return}
                 vc.viewModel = DetailViewModel(country: country)
+                let backItem = UIBarButtonItem()
+                backItem.title = "Back"
+                navigationItem.backBarButtonItem = backItem
             }
         default:
             break
