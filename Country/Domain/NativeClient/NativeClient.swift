@@ -8,7 +8,7 @@
 
 import Foundation
 
-//  This client is based on the work of by Malcolm Kumwenda. I've migrated all the responses to the newer Result type introduced in Swift 5.0
+//  This client is based on the work of by Malcolm Kumwenda. I've migrated all the responses to the newer Result type introduced in Swift 5.0, and modified Router class to have an injectable session for testing purposes.
 
 class NativeClient : ApiService {
     

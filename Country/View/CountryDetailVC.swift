@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVGKit
 
 enum CountryDataType {
     case string(String?)
@@ -21,6 +22,7 @@ class CountryDetailVC: UIViewController {
     fileprivate var infos: [(label:String, data:CountryDataType)] = []
     var viewModel :DetailViewModel!
     
+    @IBOutlet weak var imageFlag: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -28,6 +30,10 @@ class CountryDetailVC: UIViewController {
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "settings"), style: .plain, target: self, action: #selector(chooseFilter))
+        viewModel.getSVGFlagData { [weak self] (data) in
+            let anSVGImage: SVGKImage = SVGKImage(data: data)
+            self?.imageFlag.image = anSVGImage.uiImage
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

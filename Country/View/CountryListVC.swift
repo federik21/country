@@ -14,7 +14,7 @@ class CountryListVC: UIViewController {
     @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint!
     
     private var viewModel: CountryViewModel = CountryViewModel()
-    private var countryListPresenter: CountryListPresenter!
+    private var presenter: CountryListPresenter!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +24,7 @@ class CountryListVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        countryListPresenter.loadData()
+        presenter.loadData()
     }
     
     @objc func chooseFilter(){
@@ -32,9 +32,9 @@ class CountryListVC: UIViewController {
     }
     
     func setupListComponents(){
-        countryListPresenter = CountryListPresenter(viewModel: self.viewModel)
-        countryListPresenter.bind(tableView: tableView)
-        countryListPresenter.delegate = self
+        presenter = CountryListPresenter(viewModel: self.viewModel)
+        presenter.bind(tableView: tableView)
+        presenter.delegate = self
     }
     
     override func viewWillLayoutSubviews() {
