@@ -28,6 +28,9 @@
 		BB458890238023F0008F50A4 /* Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC0D4A1237C21870066D235 /* Languages.swift */; };
 		BB458891238023F0008F50A4 /* RegionalBlocs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC0D4A2237C21870066D235 /* RegionalBlocs.swift */; };
 		BB458892238023F0008F50A4 /* Translations.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC0D4A0237C21870066D235 /* Translations.swift */; };
+		BB61B92623854A100079C7BC /* CountrySettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB61B92523854A100079C7BC /* CountrySettingsVC.swift */; };
+		BB61B92823854C0A0079C7BC /* SettingTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB61B92723854C0A0079C7BC /* SettingTVC.swift */; };
+		BB61B92A23854D7D0079C7BC /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB61B92923854D7D0079C7BC /* DetailViewModel.swift */; };
 		BB7B75B9238438CC00D77487 /* CountryDataTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7B75B8238438CC00D77487 /* CountryDataTVC.swift */; };
 		BB7EDC1C238036D90056B053 /* CountryTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7EDC192380362D0056B053 /* CountryTVC.swift */; };
 		BB7EDC2023804B650056B053 /* FilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7EDC1F23804B650056B053 /* FilterVC.swift */; };
@@ -95,6 +98,9 @@
 		BB4588712380150C008F50A4 /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
 		BB45887323801845008F50A4 /* RouterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterTest.swift; sourceTree = "<group>"; };
 		BB45888C2380232A008F50A4 /* SessionProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionProtocols.swift; sourceTree = "<group>"; };
+		BB61B92523854A100079C7BC /* CountrySettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountrySettingsVC.swift; sourceTree = "<group>"; };
+		BB61B92723854C0A0079C7BC /* SettingTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTVC.swift; sourceTree = "<group>"; };
+		BB61B92923854D7D0079C7BC /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		BB7B75B8238438CC00D77487 /* CountryDataTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDataTVC.swift; sourceTree = "<group>"; };
 		BB7EDC192380362D0056B053 /* CountryTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTVC.swift; sourceTree = "<group>"; };
 		BB7EDC1F23804B650056B053 /* FilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterVC.swift; sourceTree = "<group>"; };
@@ -188,6 +194,7 @@
 			children = (
 				BB7EDC192380362D0056B053 /* CountryTVC.swift */,
 				BBE009892383EE1900E25348 /* FilterTVC.swift */,
+				BB61B92723854C0A0079C7BC /* SettingTVC.swift */,
 				BB7B75B8238438CC00D77487 /* CountryDataTVC.swift */,
 			);
 			path = Cell;
@@ -197,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				BB7EDC2423804FE50056B053 /* CountryViewModel.swift */,
+				BB61B92923854D7D0079C7BC /* DetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -286,6 +294,7 @@
 				BB92BBED237BFC6300D7A2E4 /* CountryListVC.swift */,
 				BB7EDC1F23804B650056B053 /* FilterVC.swift */,
 				BBE0098B23840D4200E25348 /* CountryDetailVC.swift */,
+				BB61B92523854A100079C7BC /* CountrySettingsVC.swift */,
 				BBC0D4AA237C281B0066D235 /* Presenter */,
 				BB7EDC1B2380363C0056B053 /* Cell */,
 			);
@@ -636,15 +645,18 @@
 				BB92BBEA237BFC6300D7A2E4 /* AppDelegate.swift in Sources */,
 				BBC0D497237C13FD0066D235 /* ApiService.swift in Sources */,
 				BBF504EA237C542B00F8DB3A /* HTTPTask.swift in Sources */,
+				BB61B92A23854D7D0079C7BC /* DetailViewModel.swift in Sources */,
 				BBC0D4A5237C21870066D235 /* Translations.swift in Sources */,
 				BB400B11237C6FF600EBCC52 /* CountryListPresenter.swift in Sources */,
 				BBC0D4A4237C21870066D235 /* Country.swift in Sources */,
 				BBF504F5237C5A0200F8DB3A /* NativeClient.swift in Sources */,
 				BBF504EC237C542B00F8DB3A /* Router.swift in Sources */,
 				BB92BBEC237BFC6300D7A2E4 /* SceneDelegate.swift in Sources */,
+				BB61B92823854C0A0079C7BC /* SettingTVC.swift in Sources */,
 				BBC0D4A7237C21870066D235 /* RegionalBlocs.swift in Sources */,
 				BBE0098A2383EE1900E25348 /* FilterTVC.swift in Sources */,
 				BBF504EB237C542B00F8DB3A /* HTTPMethod.swift in Sources */,
+				BB61B92623854A100079C7BC /* CountrySettingsVC.swift in Sources */,
 				BBC0D49C237C162F0066D235 /* AFClient.swift in Sources */,
 				BBF504F1237C542B00F8DB3A /* URLParameterEncoding.swift in Sources */,
 				BBF504F2237C542B00F8DB3A /* JSONParameterEncoder.swift in Sources */,

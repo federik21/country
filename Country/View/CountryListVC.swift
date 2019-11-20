@@ -61,7 +61,8 @@ class CountryListVC: UIViewController {
             }
         case "detailCountry":
             if let vc = segue.destination as? CountryDetailVC {
-                vc.country = sender as? Country
+                guard let country = sender as? Country else {return}
+                vc.viewModel = DetailViewModel(country: country)
             }
         default:
             break
