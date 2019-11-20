@@ -17,16 +17,16 @@ class CountryListPresenter :NSObject {
     weak var viewModel : CountryViewModel?
     var delegate :CountryListPresenterDelegate?
     var displayedCountries = [Country]() {
-        didSet {
+        willSet {
             DispatchQueue.main.async{
                 [weak self] in
                 if self?.displayedCountries.count ?? 0 > 0 {
                     self?.tableView?.isHidden = false
-                    self?.tableView?.reloadData()
                 }
                 else {
-                    //TODO: Inform user
+                    self?.tableView?.isHidden = true
                 }
+                self?.tableView?.reloadData()
             }
         }
     }
