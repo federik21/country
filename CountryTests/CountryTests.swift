@@ -39,7 +39,6 @@ class CountryTests: XCTestCase {
     func checkSingleLanguageFilter(){
         let language = "en"
         viewModel.addLanguageFilterActive(key: language)
-        viewModel.isFiltering = true
         viewModel.loadCountries(completion: {
             countries in
             assert(countries.count < 250)
@@ -53,14 +52,13 @@ class CountryTests: XCTestCase {
     func testSingleRegionFilter() {
         viewModel.loadCountries(completion: {
             [unowned self] countries in
-            self.checkSingleRegionFilter()
+            self.singleRegionFilter()
         })
     }
     
-    func checkSingleRegionFilter(){
+    func singleRegionFilter(){
         let region = "Europe"
         viewModel.addRegionFilterActive(key: region)
-        viewModel.isFiltering = true
         viewModel.loadCountries(completion: {
             countries in
             assert(countries.count < 250)
@@ -71,5 +69,63 @@ class CountryTests: XCTestCase {
         })
     }
 
+    func testMultipleRegionFilter() {
+        viewModel.loadCountries(completion: {
+            [unowned self] countries in
+            self.checkMultipleRegionFilter()
+        })
+    }
+    
+    func checkMultipleRegionFilter(){
+        let region1 = "Europe"
+        let region2 = "Americas"
+        viewModel.addRegionFilterActive(key: region1)
+        viewModel.addRegionFilterActive(key: region2)
+        viewModel.loadCountries(completion: {
+            countries in
+            assert(countries.count < 250)
+            for country in countries{
+                assert(country.region == region1 || country.region == region2)
+            }
+
+        })
+    }
+    
+    
+    func testCrossedRegionLanguageFilter() {
+        viewModel.loadCountries(completion: {
+            [unowned self] countries in
+            self.checkCrossedRegionLanguageFilter()
+        })
+    }
+    
+    func checkCrossedRegionLanguageFilter(){
+        let region1 = "Europe"
+        let region2 = "Africa"
+        viewModel.addRegionFilterActive(key: region1)
+        viewModel.addRegionFilterActive(key: region2)
+        
+        let language1 = "fr"
+        let language2 = "it"
+        viewModel.addLanguageFilterActive(key: language1)
+        viewModel.addLanguageFilterActive(key: language2)
+
+        viewModel.loadCountries(completion: {
+            countries in
+            assert(countries.count < 250)
+            for country in countries{
+                assert(country.region == region1 || country.region == region2)
+                assert(country.languages?.first(where: {$0.iso639_1 == language1 || $0.iso639_1 == language2}) != nil)
+                assert(country.name == "France"
+                    || country.name == "Marocco" //Africa
+                    || country.name != "Canada" //Not in region filter for region
+                    || country.name != "Germany" //Not in region filter for language
+                    || country.name != "Japan" //Not in region filter for all
+
+                )
+            }
+
+        })
+    }
     
 }

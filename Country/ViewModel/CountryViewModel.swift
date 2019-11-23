@@ -47,7 +47,9 @@ class CountryViewModel {
     func getFilteredCountries()->[Country]{
         return countries.filter({
             [weak self] country in
-            var languageFound = false
+            
+            var languageFound =  country.languages?.count == 0 ? true : false
+            
             for language in country.languages ?? [] {
                 if self?.languagesFilter[language.iso639_1 ?? ""] != nil {
                     languageFound = true
