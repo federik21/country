@@ -31,6 +31,7 @@
 		BB61B92623854A100079C7BC /* CountrySettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB61B92523854A100079C7BC /* CountrySettingsVC.swift */; };
 		BB61B92823854C0A0079C7BC /* SettingTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB61B92723854C0A0079C7BC /* SettingTVC.swift */; };
 		BB61B92A23854D7D0079C7BC /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB61B92923854D7D0079C7BC /* DetailViewModel.swift */; };
+		BB64927F238965F8008E7071 /* UIViewController+alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB64927E238965F8008E7071 /* UIViewController+alert.swift */; };
 		BB7B75B9238438CC00D77487 /* CountryDataTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7B75B8238438CC00D77487 /* CountryDataTVC.swift */; };
 		BB7EDC1C238036D90056B053 /* CountryTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7EDC192380362D0056B053 /* CountryTVC.swift */; };
 		BB7EDC2023804B650056B053 /* FilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7EDC1F23804B650056B053 /* FilterVC.swift */; };
@@ -100,6 +101,7 @@
 		BB61B92523854A100079C7BC /* CountrySettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountrySettingsVC.swift; sourceTree = "<group>"; };
 		BB61B92723854C0A0079C7BC /* SettingTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTVC.swift; sourceTree = "<group>"; };
 		BB61B92923854D7D0079C7BC /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		BB64927E238965F8008E7071 /* UIViewController+alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+alert.swift"; sourceTree = "<group>"; };
 		BB7B75B8238438CC00D77487 /* CountryDataTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDataTVC.swift; sourceTree = "<group>"; };
 		BB7EDC192380362D0056B053 /* CountryTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTVC.swift; sourceTree = "<group>"; };
 		BB7EDC1F23804B650056B053 /* FilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterVC.swift; sourceTree = "<group>"; };
@@ -187,6 +189,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		BB6492802389660F008E7071 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				BB64927E238965F8008E7071 /* UIViewController+alert.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		BB7EDC1B2380363C0056B053 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -237,6 +247,7 @@
 				BBC0D495237C13660066D235 /* Domain */,
 				BBC0D49D237C16780066D235 /* View */,
 				BB7EDC2323804FAF0056B053 /* ViewModel */,
+				BB6492802389660F008E7071 /* Utils */,
 				BB92BBEF237BFC6300D7A2E4 /* Main.storyboard */,
 				BB92BBF2237BFC6800D7A2E4 /* Assets.xcassets */,
 				BB92BBF4237BFC6800D7A2E4 /* LaunchScreen.storyboard */,
@@ -642,6 +653,7 @@
 				BBF504EC237C542B00F8DB3A /* Router.swift in Sources */,
 				BB92BBEC237BFC6300D7A2E4 /* SceneDelegate.swift in Sources */,
 				BB61B92823854C0A0079C7BC /* SettingTVC.swift in Sources */,
+				BB64927F238965F8008E7071 /* UIViewController+alert.swift in Sources */,
 				BBC0D4A7237C21870066D235 /* RegionalBlocs.swift in Sources */,
 				BBE0098A2383EE1900E25348 /* FilterTVC.swift in Sources */,
 				BBF504EB237C542B00F8DB3A /* HTTPMethod.swift in Sources */,

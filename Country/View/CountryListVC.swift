@@ -16,14 +16,20 @@ class CountryListVC: UIViewController {
     private var viewModel: CountryViewModel = CountryViewModel()
     private var presenter: CountryListPresenter!
 
+    @IBOutlet weak var progress: UIActivityIndicatorView!
+    @IBOutlet weak var messageLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupListComponents()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "filter"), style: .plain, target: self, action: #selector(chooseFilter))
+        self.title = "Countries"
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        progress.startAnimating()
+        progress.isHidden = false
+        messageLabel.isHidden = true
         presenter.loadData()
     }
     
@@ -51,6 +57,7 @@ class CountryListVC: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        presenter.closeSearch()
         switch segue.identifier {
         case "filter":
             if let vc = segue.destination as? FilterVC {
@@ -72,16 +79,48 @@ class CountryListVC: UIViewController {
         }
     }
     
+    @objc func reloadData(){
+        progress.startAnimating()
+        progress.isHidden = false
+        messageLabel.isHidden = true
+        presenter.loadData()
+    }
+
+    
 }
 
 extension CountryListVC: CountryListPresenterDelegate{
     
     func countryListPresenter(didSelectCountry country: Country) {
-        presenter.closeSearch()
         self.performSegue(withIdentifier: "detailCountry", sender: country)
     }
     
+    func countryListPresenter(didFinishToLoad countries: [Country], with error: Error?) {
+        DispatchQueue.main.async {
+            [unowned self] in
+                self.progress.stopAnimating()
+                self.progress.isHidden = true
+                if let error = error {
+                    self.messageLabel.isHidden = false
+                    self.messageLabel.text = "Something went wrong...\nTry to check your connection, and reload the data"
+                    
+                    self.showSimpleAlert(title: "Error", message: "\(error.localizedDescription)")
+                    
+                    self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "reload"), style: .plain, target: self, action: #selector(self.reloadData))
+
+                }
+                else {
+                    self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "filter"), style: .plain, target: self, action: #selector(self.chooseFilter))
+                    if countries.count == 0 {
+                        self.messageLabel.isHidden = false
+                        self.messageLabel.text = "No country found...\nTry a different filter"
+                        
+                    }
+                }
+            }
+        }
 }
+
 
 // Keyboard handling
 extension CountryListVC {

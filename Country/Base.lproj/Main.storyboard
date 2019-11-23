@@ -45,19 +45,35 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="tXA-3B-SpT">
+                                <rect key="frame" x="188.5" y="434.5" width="37" height="37"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qSU-QG-abL">
+                                <rect key="frame" x="15" y="441" width="384" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="qSU-QG-abL" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="7Cy-bB-Pri"/>
                             <constraint firstItem="qTV-T2-mjG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Bg5-Q5-1eF"/>
+                            <constraint firstItem="tXA-3B-SpT" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="Doo-Ik-1BS"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="qTV-T2-mjG" secondAttribute="bottom" id="jFJ-o8-0I0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qTV-T2-mjG" secondAttribute="trailing" id="k7O-Bb-Q42"/>
+                            <constraint firstItem="qSU-QG-abL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="m20-03-9Ue"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qSU-QG-abL" secondAttribute="trailing" constant="15" id="sf8-xB-0mX"/>
                             <constraint firstItem="qTV-T2-mjG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="vag-PI-Xwd"/>
+                            <constraint firstItem="tXA-3B-SpT" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="wtb-aL-JIO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="jRp-0I-XxA"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="messageLabel" destination="qSU-QG-abL" id="N5y-eR-BI0"/>
+                        <outlet property="progress" destination="tXA-3B-SpT" id="auK-em-3lB"/>
                         <outlet property="tableView" destination="qTV-T2-mjG" id="p34-oa-rL0"/>
                         <outlet property="tableViewBottomConstraint" destination="jFJ-o8-0I0" id="0F5-21-rQy"/>
                         <segue destination="CkX-wh-C2j" kind="show" identifier="filter" id="VEX-Dg-Ddr"/>
@@ -66,7 +82,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-962" y="27"/>
+            <point key="canvasLocation" x="-962.31884057971024" y="26.785714285714285"/>
         </scene>
         <!--Country DetailVC-->
         <scene sceneID="ziD-Bt-jOi">

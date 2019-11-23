@@ -10,12 +10,14 @@ import UIKit
 
 protocol CountryListPresenterDelegate {
     func countryListPresenter(didSelectCountry country: Country)
+    func countryListPresenter(didFinishToLoad countries :[Country], with error: Error?)
 }
 
 class CountryListPresenter :NSObject {
     
     weak var viewModel : CountryViewModel?
     var delegate :CountryListPresenterDelegate?
+    fileprivate var isLoading = false
     var displayedCountries = [Country]() {
         willSet {
             DispatchQueue.main.async{
@@ -53,10 +55,21 @@ class CountryListPresenter :NSObject {
     }
 
     func loadData(){
+        guard !isLoading else {
+            return
+        }
+        isLoading = true
+        
         viewModel?.loadCountries() {
-            [weak self] countries in
-                self?.displayedCountries = countries
-                self?.searchPresenter.unfilteredData = countries
+            [weak self] countries, error  in
+            self?.isLoading = false
+            guard error == nil else {
+                self?.delegate?.countryListPresenter(didFinishToLoad: [Country](), with: error)
+                return
+            }
+            self?.displayedCountries = countries
+            self?.searchPresenter.unfilteredData = countries
+            self?.delegate?.countryListPresenter(didFinishToLoad: countries, with: nil)
             }
         }
     

@@ -27,18 +27,19 @@ class CountryViewModel {
         client = service ?? NativeClient()
     }
     
-    func loadCountries(completion: @escaping ([Country]) -> Void){
+    func loadCountries(completion: @escaping ([Country], Error?) -> Void){
         client.fetchCountries(completion: {
             [weak self] result in
             switch result {
             case .success(let countries):
                 guard let self = self else {
-                    completion([])
+                    completion([], nil)
                     return
                 }
                 self.countries = countries
-                completion(self.isFiltering ? self.getFilteredCountries() : countries )
-            case .failure(_):
+                completion(self.isFiltering ? self.getFilteredCountries() : countries, nil )
+            case .failure(let error):
+                completion( [],  error)
                 break
             }
         })
