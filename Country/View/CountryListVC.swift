@@ -77,6 +77,7 @@ class CountryListVC: UIViewController {
 extension CountryListVC: CountryListPresenterDelegate{
     
     func countryListPresenter(didSelectCountry country: Country) {
+        presenter.closeSearch()
         self.performSegue(withIdentifier: "detailCountry", sender: country)
     }
     

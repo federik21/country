@@ -42,6 +42,7 @@ class CountryTests: XCTestCase {
         viewModel.loadCountries(completion: {
             countries in
             assert(countries.count < 250)
+            assert(countries.count > 0)
             for country in countries{
                 assert(country.languages?.first(where: {$0.iso639_1 == language}) != nil)
             }
@@ -62,6 +63,7 @@ class CountryTests: XCTestCase {
         viewModel.loadCountries(completion: {
             countries in
             assert(countries.count < 250)
+            assert(countries.count > 0)
             for country in countries{
                 assert(country.region == region)
             }
@@ -121,7 +123,6 @@ class CountryTests: XCTestCase {
                     || country.name != "Canada" //Not in region filter for region
                     || country.name != "Germany" //Not in region filter for language
                     || country.name != "Japan" //Not in region filter for all
-
                 )
             }
 

@@ -61,4 +61,8 @@ class CountrySearchBarController: NSObject, UISearchResultsUpdating, UISearchBar
         delegate?.countrySearch(didCompleteWithCountries: unfilteredData)
     }
     
+    func closeSearch(){
+        self.searchController.isActive = false
+    }
+    
 }

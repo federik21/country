@@ -44,7 +44,6 @@
 		BB92BC01237BFC6900D7A2E4 /* CountryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB92BC00237BFC6900D7A2E4 /* CountryTests.swift */; };
 		BB92BC0C237BFC6900D7A2E4 /* CountryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB92BC0B237BFC6900D7A2E4 /* CountryUITests.swift */; };
 		BBC0D497237C13FD0066D235 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC0D496237C13FD0066D235 /* ApiService.swift */; };
-		BBC0D49C237C162F0066D235 /* AFClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC0D49B237C162F0066D235 /* AFClient.swift */; };
 		BBC0D4A3237C21870066D235 /* Currencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC0D49E237C21870066D235 /* Currencies.swift */; };
 		BBC0D4A4237C21870066D235 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC0D49F237C21870066D235 /* Country.swift */; };
 		BBC0D4A5237C21870066D235 /* Translations.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC0D4A0237C21870066D235 /* Translations.swift */; };
@@ -121,7 +120,6 @@
 		BB92BC0D237BFC6900D7A2E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB9F50C89FCB41A3713E3375 /* Pods-CountryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryTests.debug.xcconfig"; path = "Target Support Files/Pods-CountryTests/Pods-CountryTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BBC0D496237C13FD0066D235 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
-		BBC0D49B237C162F0066D235 /* AFClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFClient.swift; sourceTree = "<group>"; };
 		BBC0D49E237C21870066D235 /* Currencies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currencies.swift; sourceTree = "<group>"; };
 		BBC0D49F237C21870066D235 /* Country.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		BBC0D4A0237C21870066D235 /* Translations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Translations.swift; sourceTree = "<group>"; };
@@ -273,7 +271,6 @@
 			isa = PBXGroup;
 			children = (
 				BBC0D496237C13FD0066D235 /* ApiService.swift */,
-				BBF504D8237C541B00F8DB3A /* AlamofireClient */,
 				BBF504D7237C540F00F8DB3A /* NativeClient */,
 				BBC0D498237C147E0066D235 /* Entity */,
 			);
@@ -332,14 +329,6 @@
 				BBF504DB237C542A00F8DB3A /* Service */,
 			);
 			path = NativeClient;
-			sourceTree = "<group>";
-		};
-		BBF504D8237C541B00F8DB3A /* AlamofireClient */ = {
-			isa = PBXGroup;
-			children = (
-				BBC0D49B237C162F0066D235 /* AFClient.swift */,
-			);
-			path = AlamofireClient;
 			sourceTree = "<group>";
 		};
 		BBF504D9237C542A00F8DB3A /* Manager */ = {
@@ -657,7 +646,6 @@
 				BBE0098A2383EE1900E25348 /* FilterTVC.swift in Sources */,
 				BBF504EB237C542B00F8DB3A /* HTTPMethod.swift in Sources */,
 				BB61B92623854A100079C7BC /* CountrySettingsVC.swift in Sources */,
-				BBC0D49C237C162F0066D235 /* AFClient.swift in Sources */,
 				BBF504F1237C542B00F8DB3A /* URLParameterEncoding.swift in Sources */,
 				BBF504F2237C542B00F8DB3A /* JSONParameterEncoder.swift in Sources */,
 				BBC0D4A6237C21870066D235 /* Languages.swift in Sources */,

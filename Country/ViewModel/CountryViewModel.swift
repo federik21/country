@@ -48,15 +48,25 @@ class CountryViewModel {
         return countries.filter({
             [weak self] country in
             
-            var languageFound =  country.languages?.count == 0 ? true : false
+            var languageFound = true
+            var regionFound = true
             
-            for language in country.languages ?? [] {
-                if self?.languagesFilter[language.iso639_1 ?? ""] != nil {
-                    languageFound = true
-                    break
+            guard let self = self else {return false}
+            
+            if languagesFilter.count > 0 {
+                languageFound = false
+                for language in country.languages ?? [] {
+                    if self.languagesFilter[language.iso639_1 ?? ""] != nil {
+                        languageFound = true
+                        break
+                    }
                 }
             }
-            return (self?.regionsFilter[country.region ?? ""] != nil) && languageFound
+            if regionsFilter.count > 0 {
+                regionFound = (self.regionsFilter[country.region ?? ""] != nil)
+            }
+            
+            return regionFound && languageFound
         })
     }
     

@@ -59,6 +59,10 @@ class CountryListPresenter :NSObject {
                 self?.searchPresenter.unfilteredData = countries
             }
         }
+    
+    func closeSearch(){
+        searchPresenter.closeSearch()
+    }
 }
 
 
