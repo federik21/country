@@ -25,22 +25,18 @@ Launch the app in the simulator or device
 ## Approach
 This project was developed following MVVM architecture. Files are grouped by :
 
-###ViewControllers
-This group contains the view controllers. The main responsability of this layer is databinding and managing lifecycle of the screen.
+###Domain
+This group contains the network communication layer.
 
-###Entities
-Rappresents the Model layer.
+###View
+This group contains view controllers and presenters. The main responsability of this layer is databinding and managing lifecycle of the screen, and how the data is displayed to the user.
 
-###Manager
-This group contains the domain logic  (i.e: server communication). 
-
-###Utilities
-There are facility methods and extention.
-
+###Model View
+Implements the logic behind the views.
 
 ## Built With
 
-* [Alamofire](https://github.com/Alamofire/Alamofire) - Elegant HTTP Networking in Swift
+* [SVGKit](https://github.com/SVGKit/SVGKit/) - Cocoa framework for rendering SVG files natively
 * [Cocoapods](https://rometools.github.io/rome/) - Dependency Management
 
 ## Versioning
