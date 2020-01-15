@@ -11,7 +11,7 @@ import UIKit
 class CountrySettingsVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    var viewModel :DetailViewModel!
+    var presenter :CountryDetailPresenter!
 
     let settings = ["name","topLevelDomain","alpha2Code","alpha3Code","callingCodes","capital","altSpellings","region","subregion","population","latlng","demonym","area","gini","timezones","borders","nativeName","nativeName","currencies","languages","regionalBlocs","cioc"]
 
@@ -43,7 +43,7 @@ extension CountrySettingsVC : UITableViewDataSource, UITableViewDelegate {
         let data = settings[indexPath.row]
         cell.labelTitle?.text = data
         cell.filterId = data
-        let on = !viewModel.hiddenDetails.contains(data)
+        let on = !presenter.hiddenDetails.contains(data)
         cell.switchActive.isOn = on
         cell.switchActive.setOn(on, animated: false)
         return cell
@@ -52,13 +52,13 @@ extension CountrySettingsVC : UITableViewDataSource, UITableViewDelegate {
 
 extension CountrySettingsVC : SettingCellDelegate {
     func settingCell(didSwitchFilter cell: SettingTVC, isOn: Bool) {
-    guard let code = cell.filterId, let vm = viewModel else {return}
+    guard let code = cell.filterId, let p = presenter else {return}
         if isOn{
-            vm.hiddenDetails.removeAll(where: {$0 == code})
+            p.hiddenDetails.removeAll(where: {$0 == code})
         }
         else {
-            if !vm.hiddenDetails.contains(code){
-                vm.hiddenDetails.append(code)
+            if !p.hiddenDetails.contains(code){
+                p.hiddenDetails.append(code)
             }
         }
     }

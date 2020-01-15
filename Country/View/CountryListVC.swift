@@ -12,8 +12,6 @@ class CountryListVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint!
-    
-    private var viewModel: CountryViewModel = CountryViewModel()
     private var presenter: CountryListPresenter!
 
     @IBOutlet weak var progress: UIActivityIndicatorView!
@@ -38,7 +36,7 @@ class CountryListVC: UIViewController {
     }
     
     func setupListComponents(){
-        presenter = CountryListPresenter(viewModel: self.viewModel)
+        presenter = CountryListPresenter()
         presenter.bind(tableView: tableView)
         presenter.delegate = self
     }
@@ -61,7 +59,7 @@ class CountryListVC: UIViewController {
         switch segue.identifier {
         case "filter":
             if let vc = segue.destination as? FilterVC {
-                vc.viewModel = self.viewModel
+                vc.presenter = self.presenter
                 let backItem = UIBarButtonItem()
                 backItem.title = "Apply"
                 navigationItem.backBarButtonItem = backItem
@@ -69,7 +67,7 @@ class CountryListVC: UIViewController {
         case "detailCountry":
             if let vc = segue.destination as? CountryDetailVC {
                 guard let country = sender as? Country else {return}
-                vc.viewModel = DetailViewModel(country: country)
+                vc.country = country
                 let backItem = UIBarButtonItem()
                 backItem.title = "Back"
                 navigationItem.backBarButtonItem = backItem

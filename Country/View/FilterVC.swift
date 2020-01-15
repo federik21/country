@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 class FilterVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
@@ -18,10 +19,10 @@ class FilterVC: UIViewController {
     // Will be section 1 of the table view
     var languages = [Languages]()
 
-    weak var viewModel: CountryViewModel? {
+    weak var presenter: CountryListPresenter? {
         didSet {
-            regions = viewModel?.getRegions().sorted() ?? []
-            languages = viewModel?.getLanguages().sorted(by: {$1.name ?? "" > $0.name ?? ""}) ?? []
+            regions = presenter?.getRegions().sorted() ?? []
+            languages = presenter?.getLanguages().sorted(by: {$1.name ?? "" > $0.name ?? ""}) ?? []
         }
     }
 
@@ -32,7 +33,7 @@ class FilterVC: UIViewController {
     }
     
     fileprivate func updateFilteringStatus() {
-        if viewModel?.isFiltering ?? false {
+        if presenter?.isFiltering ?? false {
             labelStatus.text = "Filters are ACTIVE"
         }
         else {
@@ -46,7 +47,7 @@ class FilterVC: UIViewController {
     }
     
     @IBAction func resetFilter(_ sender: Any) {
-        self.viewModel?.resetFilters()
+        self.presenter?.resetFilters()
         self.tableView.reloadData()
         updateFilteringStatus()
     }
@@ -90,7 +91,7 @@ extension FilterVC : UITableViewDataSource, UITableViewDelegate {
                 cell.type = .region
                 cell.filterId = data
                 cell.labelTitle?.text = data
-                let on = viewModel?.regionFilterActive(key: data) ?? false
+                let on = presenter?.regionFilterActive(key: data) ?? false
                 cell.switchActive.isOn = on
                 cell.switchActive.setOn(on, animated: false)
             case 1:
@@ -98,7 +99,7 @@ extension FilterVC : UITableViewDataSource, UITableViewDelegate {
                 cell.type = .language
                 cell.filterId = data.iso639_1
                 cell.labelTitle?.text = data.name
-                let on = viewModel?.languageFilterActive(key: data.iso639_1 ?? "") ?? false
+                let on = presenter?.languageFilterActive(key: data.iso639_1 ?? "") ?? false
                 cell.switchActive.isOn = on
                 cell.switchActive.setOn(on, animated: false)
             default:
@@ -114,18 +115,18 @@ extension FilterVC : FilterCellDelegate {
         switch cell.type {
         case .region:
             if isOn {
-                viewModel?.addRegionFilterActive(key: code)
+                presenter?.addRegionFilterActive(key: code)
             }
             else {
-                viewModel?.removeRegionFilterActive(key: code)
+                presenter?.removeRegionFilterActive(key: code)
             }
 
         case .language:
             if isOn {
-                viewModel?.addLanguageFilterActive(key: code)
+                presenter?.addLanguageFilterActive(key: code)
             }
             else {
-                viewModel?.removeLanguageFilterActive(key: code)
+                presenter?.removeLanguageFilterActive(key: code)
             }
         default:
             break

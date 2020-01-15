@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DetailViewModel {
+class DetailModel {
     
     var country: Country
     
@@ -51,20 +51,4 @@ class DetailViewModel {
         
         return infos
      }
-    
-    func getSVGFlagData( handler: @escaping (Data) -> Void){
-        guard let flagUrlString = country.flag else {return}
-        guard let requestURL: URL = URL(string: flagUrlString) else {return}
-        let urlRequest: URLRequest = URLRequest(url: requestURL)
-        let session :URLSessionProtocol = URLSession.shared
-        let task = session.dataTask(with: urlRequest, completionHandler: {
-            (data, response, error) -> Void in
-                    let httpResponse = response as! HTTPURLResponse
-                    let statusCode = httpResponse.statusCode
-                    if (statusCode == 200), let dataResponse = data {
-                        handler(dataResponse)
-            }
-        })
-        task.resume()
-    }
 }

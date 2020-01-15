@@ -17,6 +17,7 @@ enum NetworkEnvironment {
 
 public enum CountryApi {
     case all(Void)
+    case some(country: String)
 }
 
 extension CountryApi: EndPointType {
@@ -38,17 +39,27 @@ extension CountryApi: EndPointType {
         switch self {
         case .all:
             return "v2/all"
+        case .some(_):
+            return "v2/some"
         }
     }
     
     var httpMethod: HTTPMethod {
-        return .get
+        switch self {
+        default:
+            return .get
+        }
     }
     
     var task: HTTPTask {
         switch self {
+        case .some(let country) :
+                return .requestParameters(bodyParameters: nil,
+                                          bodyEncoding: .urlEncoding,
+                                          urlParameters: ["country":country])
         default:
             return .request
+            
         }
     }
     

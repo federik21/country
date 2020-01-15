@@ -11,11 +11,11 @@ import XCTest
 
 class CountryTests: XCTestCase {
     
-    var viewModel : CountryViewModel!
+    var model : CountryModel!
     
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        viewModel = CountryViewModel(service: MockClient())
+        model = CountryModel(service: MockClient())
     }
 
     override func tearDown() {
@@ -23,24 +23,24 @@ class CountryTests: XCTestCase {
     }
 
     func testGetUnfilteredList() {
-        viewModel.loadCountries(completion: {
-            countries in
-            assert(countries.count == 250)
+        model.loadCountries(completion: {
+            (countries, error) in
+                assert(countries.count == 250)
         })
     }
     
     func testSingleLanguageFilter() {
-        viewModel.loadCountries(completion: {
-            [unowned self] countries in
+        model.loadCountries(completion: {
+            [unowned self] (countries, error) in
             self.checkSingleLanguageFilter()
         })
     }
     
     func checkSingleLanguageFilter(){
         let language = "en"
-        viewModel.addLanguageFilterActive(key: language)
-        viewModel.loadCountries(completion: {
-            countries in
+        model.addLanguageFilterActive(key: language)
+        model.loadCountries(completion: {
+            (countries, error) in
             assert(countries.count < 250)
             assert(countries.count > 0)
             for country in countries{
@@ -51,17 +51,17 @@ class CountryTests: XCTestCase {
     }
     
     func testSingleRegionFilter() {
-        viewModel.loadCountries(completion: {
-            [unowned self] countries in
+        model.loadCountries(completion: {
+             (countries, error) in
             self.singleRegionFilter()
         })
     }
     
     func singleRegionFilter(){
         let region = "Europe"
-        viewModel.addRegionFilterActive(key: region)
-        viewModel.loadCountries(completion: {
-            countries in
+        model.addRegionFilterActive(key: region)
+        model.loadCountries(completion: {
+            (countries, error) in
             assert(countries.count < 250)
             assert(countries.count > 0)
             for country in countries{
@@ -72,8 +72,8 @@ class CountryTests: XCTestCase {
     }
 
     func testMultipleRegionFilter() {
-        viewModel.loadCountries(completion: {
-            [unowned self] countries in
+        model.loadCountries(completion: {
+             (countries, error) in
             self.checkMultipleRegionFilter()
         })
     }
@@ -81,10 +81,10 @@ class CountryTests: XCTestCase {
     func checkMultipleRegionFilter(){
         let region1 = "Europe"
         let region2 = "Americas"
-        viewModel.addRegionFilterActive(key: region1)
-        viewModel.addRegionFilterActive(key: region2)
-        viewModel.loadCountries(completion: {
-            countries in
+        model.addRegionFilterActive(key: region1)
+        model.addRegionFilterActive(key: region2)
+        model.loadCountries(completion: {
+            countries,_  in
             assert(countries.count < 250)
             for country in countries{
                 assert(country.region == region1 || country.region == region2)
@@ -95,8 +95,8 @@ class CountryTests: XCTestCase {
     
     
     func testCrossedRegionLanguageFilter() {
-        viewModel.loadCountries(completion: {
-            [unowned self] countries in
+        model.loadCountries(completion: {
+            [unowned self] (countries, error) in
             self.checkCrossedRegionLanguageFilter()
         })
     }
@@ -104,16 +104,16 @@ class CountryTests: XCTestCase {
     func checkCrossedRegionLanguageFilter(){
         let region1 = "Europe"
         let region2 = "Africa"
-        viewModel.addRegionFilterActive(key: region1)
-        viewModel.addRegionFilterActive(key: region2)
+        model.addRegionFilterActive(key: region1)
+        model.addRegionFilterActive(key: region2)
         
         let language1 = "fr"
         let language2 = "it"
-        viewModel.addLanguageFilterActive(key: language1)
-        viewModel.addLanguageFilterActive(key: language2)
+        model.addLanguageFilterActive(key: language1)
+        model.addLanguageFilterActive(key: language2)
 
-        viewModel.loadCountries(completion: {
-            countries in
+        model.loadCountries(completion: {
+             (countries, error) in
             assert(countries.count < 250)
             for country in countries{
                 assert(country.region == region1 || country.region == region2)

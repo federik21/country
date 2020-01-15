@@ -30,4 +30,21 @@ class NativeClient : ApiService {
                 completion(.failure(error))
             }})
     }
+    
+    func some(country :String, completion: @escaping (Result<[Country], Error>) -> Void){
+        router.request(CountryApi.some(country: country) , completion: {
+            response in
+            switch response {
+            case .success(let data):
+                    do {
+                    let decoder = JSONDecoder()
+                    let countryList = try decoder.decode([Country].self, from: data)
+                    completion(.success(countryList))
+                } catch let error {
+                    completion(.failure(error))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }})
+    }
 }

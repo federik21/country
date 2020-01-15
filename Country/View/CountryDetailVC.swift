@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SVGKit
 
 enum CountryDataType {
     case string(String?)
@@ -20,7 +19,12 @@ enum CountryDataType {
 class CountryDetailVC: UIViewController {
     
     fileprivate var infos: [(label:String, data:CountryDataType)] = []
-    var viewModel :DetailViewModel!
+    var country :Country!{
+        didSet{
+            presenter = CountryDetailPresenter(country: country)
+        }
+    }
+    var presenter :CountryDetailPresenter!
     
     @IBOutlet weak var imageFlag: UIImageView!
     @IBOutlet weak var tableView: UITableView!
@@ -30,15 +34,14 @@ class CountryDetailVC: UIViewController {
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "settings"), style: .plain, target: self, action: #selector(chooseFilter))
-        viewModel.getSVGFlagData { [weak self] (data) in
-            let anSVGImage: SVGKImage = SVGKImage(data: data)
-            self?.imageFlag.image = anSVGImage.uiImage
+        presenter.getFlag { [weak self] (image) in
+            self?.imageFlag.image = image
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.infos = viewModel.parseInfo()
+        self.infos = presenter.parseInfo()
         self.tableView.reloadData()
     }
     
@@ -50,7 +53,7 @@ class CountryDetailVC: UIViewController {
         switch segue.identifier {
         case "countryDetailSettings":
             if let vc = segue.destination as? CountrySettingsVC {
-                vc.viewModel = self.viewModel
+                vc.presenter = self.presenter
             }
         default:
             break

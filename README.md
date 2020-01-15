@@ -23,16 +23,20 @@ Launch the app in the simulator or device
 ```
 
 ## Approach
-This project was developed following MVVM architecture. Files are grouped by :
+This project follows MVP architecture. Files are grouped by :
+
+
+###View
+The main responsability of this layer is databinding and managing lifecycle of the screen, and how the data is displayed to the user.
+
+###Presenter
+Connects the View and the model.
+
+###Model
+Contains and loads the data.
 
 ###Domain
 This group contains the network communication layer.
-
-###View
-This group contains view controllers and presenters. The main responsability of this layer is databinding and managing lifecycle of the screen, and how the data is displayed to the user.
-
-###Model View
-Implements the logic behind the views.
 
 ## Built With
 

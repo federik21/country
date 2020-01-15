@@ -14,10 +14,52 @@ protocol CountryListPresenterDelegate {
 }
 
 class CountryListPresenter :NSObject {
-    
-    weak var viewModel : CountryViewModel?
+    private var model: CountryModel = CountryModel()
     var delegate :CountryListPresenterDelegate?
     fileprivate var isLoading = false
+    
+    var isFiltering : Bool {
+        get{
+            return model.isFiltering
+        }
+    }
+    
+    func getRegions()->[String]{
+        return model.getRegions()
+    }
+    
+    func getLanguages()->[Languages]{
+        return model.getLanguages()
+    }
+    
+    func regionFilterActive(key: String)->Bool{
+        return model.regionFilterActive(key:key)
+    }
+    
+    func languageFilterActive(key: String)->Bool{
+        return model.languageFilterActive(key:key)
+    }
+    
+    func addRegionFilterActive(key: String){
+        model.addRegionFilterActive(key:key)
+    }
+    
+    func addLanguageFilterActive(key: String){
+        model.addLanguageFilterActive(key:key)
+    }
+    
+    func removeRegionFilterActive(key: String){
+        model.removeRegionFilterActive(key:key)
+    }
+    
+    func removeLanguageFilterActive(key: String){
+        model.removeLanguageFilterActive(key:key)
+    }
+    
+    func resetFilters(){
+        model.resetFilters()
+    }
+    
     var displayedCountries = [Country]() {
         willSet {
             DispatchQueue.main.async{
@@ -38,11 +80,6 @@ class CountryListPresenter :NSObject {
     
     private let searchPresenter = CountrySearchBarController()
     
-    init(viewModel: CountryViewModel) {
-        self.viewModel = viewModel
-        super.init()
-    }
-    
     func bind(tableView: UITableView){
         self.tableView = tableView
         self.tableView?.isHidden = true
@@ -60,7 +97,7 @@ class CountryListPresenter :NSObject {
         }
         isLoading = true
         
-        viewModel?.loadCountries() {
+        model.loadCountries() {
             [weak self] countries, error  in
             self?.isLoading = false
             guard error == nil else {

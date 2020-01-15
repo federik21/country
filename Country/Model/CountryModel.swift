@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CountryViewModel {
+class CountryModel {
     
     fileprivate var client :ApiService
 
