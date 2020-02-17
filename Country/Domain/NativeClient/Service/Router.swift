@@ -16,8 +16,13 @@ protocol NetworkRouter: class {
     func cancel()
 }
 
-struct ClientError: Error {
-    let message: String
+enum NetworkResponse:String, Error {
+    case authenticationError = "You need to be authenticated first."
+    case badRequest = "Bad request"
+    case outdated = "The url you requested is outdated."
+    case failed = "Network request failed."
+    case noData = "Response returned with no data to decode."
+    case unableToDecode = "We could not decode the response."
 }
 
 class Router<EndPoint: EndPointType>: NetworkRouter {
@@ -31,16 +36,28 @@ class Router<EndPoint: EndPointType>: NetworkRouter {
     func request(_ route: EndPoint, completion: @escaping NetworkRouterCompletion) {
         do {
             let request = try self.buildRequest(from: route)
-            task = session.dataTask(with: request, completionHandler: { data, response, error in
-                guard error == nil else {
-                    completion(.failure(error!))
-                    return
+            task = session.dataTask(with: request, completionHandler: {
+                data, response, error in
+                if let response = response as? HTTPURLResponse {
+                    let result = self.handleNetworkResponse(response)
+                    switch result {
+                    case .success():
+                        guard error == nil else {
+                            completion(.failure(error!))
+                            return
+                        }
+                        guard let data = data  else {
+                            completion(.failure(NetworkResponse.noData))
+                            return
+                        }
+                        completion(.success(data))
+                    case .failure(let error):
+                        completion(.failure(error))
+                    }
                 }
-                guard let data = data  else {
-                    completion(.failure(ClientError(message: "data is nil")))
-                    return
+                else {
+                    completion(.failure(NetworkError.generic))
                 }
-                completion(.success(data))
             }) as? URLSessionTask
         }catch {
             completion(.failure(error))
@@ -108,5 +125,14 @@ class Router<EndPoint: EndPointType>: NetworkRouter {
         }
     }
     
+    fileprivate func handleNetworkResponse(_ response: HTTPURLResponse) -> Result<Void, Error>{
+        switch response.statusCode {
+        case 200...299: return .success(())
+        case 401...500: return .failure((NetworkResponse.authenticationError))
+        case 501...599: return .failure((NetworkResponse.badRequest))
+        case 600: return .failure((NetworkResponse.outdated))
+        default: return .failure((NetworkResponse.failed))
+        }
+    }
 }
 

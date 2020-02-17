@@ -12,6 +12,7 @@ import Foundation
 
 class NativeClient : ApiService {
     
+    static var environment :NetworkEnvironment = NetworkEnvironment.production
     private let router = Router<CountryApi>(session: URLSession.shared)
     
     func fetchCountries(completion: @escaping (Result<[Country], Error>) -> Void){

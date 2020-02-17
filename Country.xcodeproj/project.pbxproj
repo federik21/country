@@ -17,7 +17,6 @@
 		BB458883238021A1008F50A4 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF504F6237C5B1F00F8DB3A /* ParameterEncoding.swift */; };
 		BB458884238021A1008F50A4 /* URLParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF504E6237C542A00F8DB3A /* URLParameterEncoding.swift */; };
 		BB458885238021A1008F50A4 /* JSONParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF504E7237C542A00F8DB3A /* JSONParameterEncoder.swift */; };
-		BB458886238021A1008F50A4 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF504DA237C542A00F8DB3A /* NetworkManager.swift */; };
 		BB458887238021A1008F50A4 /* HTTPTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF504DD237C542A00F8DB3A /* HTTPTask.swift */; };
 		BB458888238021A1008F50A4 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF504DE237C542A00F8DB3A /* HTTPMethod.swift */; };
 		BB45888A238021A1008F50A4 /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF504E1237C542A00F8DB3A /* EndPointType.swift */; };
@@ -30,7 +29,6 @@
 		BB458892238023F0008F50A4 /* Translations.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC0D4A0237C21870066D235 /* Translations.swift */; };
 		BB61B92623854A100079C7BC /* CountrySettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB61B92523854A100079C7BC /* CountrySettingsVC.swift */; };
 		BB61B92823854C0A0079C7BC /* SettingTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB61B92723854C0A0079C7BC /* SettingTVC.swift */; };
-		BB61B92A23854D7D0079C7BC /* DetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB61B92923854D7D0079C7BC /* DetailModel.swift */; };
 		BB64927F238965F8008E7071 /* UIViewController+alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB64927E238965F8008E7071 /* UIViewController+alert.swift */; };
 		BB7B75B9238438CC00D77487 /* CountryDataTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7B75B8238438CC00D77487 /* CountryDataTVC.swift */; };
 		BB7EDC1C238036D90056B053 /* CountryTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7EDC192380362D0056B053 /* CountryTVC.swift */; };
@@ -60,7 +58,6 @@
 		BBE4BB632381725F00F5E61A /* CountryTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7EDC192380362D0056B053 /* CountryTVC.swift */; };
 		BBE4BB65238172E400F5E61A /* allCountryResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = BBE4BB64238172E300F5E61A /* allCountryResponse.json */; };
 		BBF504D6237C4D8100F8DB3A /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF504D5237C4D8100F8DB3A /* EndPoint.swift */; };
-		BBF504E8237C542B00F8DB3A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF504DA237C542A00F8DB3A /* NetworkManager.swift */; };
 		BBF504EA237C542B00F8DB3A /* HTTPTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF504DD237C542A00F8DB3A /* HTTPTask.swift */; };
 		BBF504EB237C542B00F8DB3A /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF504DE237C542A00F8DB3A /* HTTPMethod.swift */; };
 		BBF504EC237C542B00F8DB3A /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF504DF237C542A00F8DB3A /* Router.swift */; };
@@ -101,7 +98,6 @@
 		BB45888C2380232A008F50A4 /* SessionProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionProtocols.swift; sourceTree = "<group>"; };
 		BB61B92523854A100079C7BC /* CountrySettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountrySettingsVC.swift; sourceTree = "<group>"; };
 		BB61B92723854C0A0079C7BC /* SettingTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTVC.swift; sourceTree = "<group>"; };
-		BB61B92923854D7D0079C7BC /* DetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModel.swift; sourceTree = "<group>"; };
 		BB64927E238965F8008E7071 /* UIViewController+alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+alert.swift"; sourceTree = "<group>"; };
 		BB7B75B8238438CC00D77487 /* CountryDataTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDataTVC.swift; sourceTree = "<group>"; };
 		BB7EDC192380362D0056B053 /* CountryTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTVC.swift; sourceTree = "<group>"; };
@@ -136,7 +132,6 @@
 		BBE4BB5C23816ECD00F5E61A /* MockClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockClient.swift; sourceTree = "<group>"; };
 		BBE4BB64238172E300F5E61A /* allCountryResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = allCountryResponse.json; sourceTree = "<group>"; };
 		BBF504D5237C4D8100F8DB3A /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
-		BBF504DA237C542A00F8DB3A /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		BBF504DD237C542A00F8DB3A /* HTTPTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPTask.swift; sourceTree = "<group>"; };
 		BBF504DE237C542A00F8DB3A /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		BBF504DF237C542A00F8DB3A /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -215,7 +210,6 @@
 			isa = PBXGroup;
 			children = (
 				BB7EDC2423804FE50056B053 /* CountryModel.swift */,
-				BB61B92923854D7D0079C7BC /* DetailModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -337,7 +331,6 @@
 		BBF504D7237C540F00F8DB3A /* NativeClient */ = {
 			isa = PBXGroup;
 			children = (
-				BBF504F4237C5A0200F8DB3A /* NativeClient.swift */,
 				BBF504F3237C59D000F8DB3A /* Endpoint */,
 				BBF504E4237C542A00F8DB3A /* Encoding */,
 				BBF504D9237C542A00F8DB3A /* Manager */,
@@ -349,7 +342,7 @@
 		BBF504D9237C542A00F8DB3A /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				BBF504DA237C542A00F8DB3A /* NetworkManager.swift */,
+				BBF504F4237C5A0200F8DB3A /* NativeClient.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -357,9 +350,9 @@
 		BBF504DB237C542A00F8DB3A /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				BBF504DF237C542A00F8DB3A /* Router.swift */,
 				BBF504DD237C542A00F8DB3A /* HTTPTask.swift */,
 				BBF504DE237C542A00F8DB3A /* HTTPMethod.swift */,
-				BBF504DF237C542A00F8DB3A /* Router.swift */,
 				BBF504E1237C542A00F8DB3A /* EndPointType.swift */,
 				BB45888C2380232A008F50A4 /* SessionProtocols.swift */,
 			);
@@ -646,11 +639,9 @@
 				BBE0098C23840D4200E25348 /* CountryDetailVC.swift in Sources */,
 				BB45888D2380232A008F50A4 /* SessionProtocols.swift in Sources */,
 				BB7B75B9238438CC00D77487 /* CountryDataTVC.swift in Sources */,
-				BBF504E8237C542B00F8DB3A /* NetworkManager.swift in Sources */,
 				BB92BBEA237BFC6300D7A2E4 /* AppDelegate.swift in Sources */,
 				BBC0D497237C13FD0066D235 /* ApiService.swift in Sources */,
 				BBF504EA237C542B00F8DB3A /* HTTPTask.swift in Sources */,
-				BB61B92A23854D7D0079C7BC /* DetailModel.swift in Sources */,
 				BBABF3D323CF1E19003EB61A /* CountryDetailPresenter.swift in Sources */,
 				BBC0D4A5237C21870066D235 /* Translations.swift in Sources */,
 				BB400B11237C6FF600EBCC52 /* CountryListPresenter.swift in Sources */,
@@ -680,7 +671,6 @@
 				BB458883238021A1008F50A4 /* ParameterEncoding.swift in Sources */,
 				BB458891238023F0008F50A4 /* RegionalBlocs.swift in Sources */,
 				BB458890238023F0008F50A4 /* Languages.swift in Sources */,
-				BB458886238021A1008F50A4 /* NetworkManager.swift in Sources */,
 				BBE4BB61238171B200F5E61A /* NativeClient.swift in Sources */,
 				BB458882238021A1008F50A4 /* EndPoint.swift in Sources */,
 				BB45887923802157008F50A4 /* Country.swift in Sources */,

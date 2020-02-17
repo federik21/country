@@ -23,7 +23,7 @@ public enum CountryApi {
 extension CountryApi: EndPointType {
     
     var environmentBaseURL : String {
-        switch NetworkManager.environment {
+        switch NativeClient.environment {
         case .production: return "https://restcountries.eu/rest/"
         case .qa: return "https://restcountries.eu/rest/"
         case .staging: return "https://restcountries.eu/rest/"
