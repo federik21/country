@@ -26,16 +26,16 @@ Launch the app in the simulator or device
 This project follows MVP architecture. Files are grouped by :
 
 
-###View
+### View
 The main responsability of this layer is databinding and managing lifecycle of the screen, and how the data is displayed to the user.
 
-###Presenter
+### Presenter
 Connects the View and the model.
 
-###Model
+### Model
 Contains and loads the data.
 
-###Domain
+### Domain
 This group contains the network communication layer.
 
 ## Built With
